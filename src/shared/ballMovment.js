@@ -1,4 +1,4 @@
-export function BallMovment(ctx, ballObject, img) {
+export function BallMovment(ctx, ballObject,img) {
     let gameData = new Ball(ballObject.x, ballObject.y, ballObject.dx, ballObject.dy, ballObject.speed, ballObject.rad);
     gameData.draw(ctx, img);
     ballObject.x += ballObject.dx;

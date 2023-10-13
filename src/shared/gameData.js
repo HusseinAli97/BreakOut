@@ -14,12 +14,6 @@ export default  {
         height: 20,
         density: 2,
     },
-    Player: {
-        name: 'Player 1',
-        score: 0,
-        level: 1,
-        lives: 5
-    },
     paddle: {
         x: 100,
         y: 500-20,
@@ -29,5 +23,11 @@ export default  {
             'linear-gradient(90deg,rgb(7, 66, 108) 0%,rgb(52, 140, 202) 100%)',
         ]
         
+    },
+    Player : {
+        Level : 1,
+        Lives : 5,
+        Score : 0,
+        Name : ''
     }
 }

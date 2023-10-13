@@ -10,7 +10,6 @@ export default (ctx, canvas, paddleProps) => {
             this.image = new Image();
             this.image.src = paddleImage;
         }
-
         move() {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }

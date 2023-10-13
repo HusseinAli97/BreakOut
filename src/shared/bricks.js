@@ -53,7 +53,6 @@ export default function Brick(level, bricks, canvas, brick) {
             brick.y += brick.height + 7;
         }
     }
-    console.log(newbricks);
     return newbricks;
 }
 

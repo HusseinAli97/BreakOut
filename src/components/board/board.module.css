@@ -12,6 +12,8 @@
     text-align: center;
     overflow: hidden;
     position: relative;
+    cursor: none;
+
 }
 .canvas{
     width: 100%;
@@ -22,4 +24,11 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    cursor: none;
+}
+
+.gameOver{
+    cursor: default;
+    width: 100%;
+    height: 100%;
 }
