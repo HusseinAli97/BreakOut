@@ -1,5 +1,6 @@
-import gameData from "./gameData";
+import { gameData } from "./gameData";
 export let gameEnd = false;
+
 export default function ballDriaction(ballObject, canvas, paddleProps, setGame) {
     if (ballObject.x <= 0 || ballObject.x > (canvas.width - 20)) {
         ballObject.dx *= -1;
@@ -24,5 +25,15 @@ export default function ballDriaction(ballObject, canvas, paddleProps, setGame) 
             return
         }
     }
-    
+    if (gameData.Player.Score === 2000) {
+        ballObject.x = paddleProps.x;
+        ballObject.y = paddleProps.y - 30;
+        ballObject.dx = 0;
+        ballObject.dy = 0;
+        ballObject.speed = 1;
+        ballObject.rad = 20;
+        gameEnd = true;
+        setGame(gameEnd);
+        return
+    }
 }

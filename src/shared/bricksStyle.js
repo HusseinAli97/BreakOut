@@ -20,7 +20,7 @@ const bricksImage = [
     brick9,
     brick10
 ]
-export default function Brick(level, bricks, canvas, brick) {
+export default function BricksStyle(level, bricks, canvas, brick) {
     brick.width = canvas.width / 15;
     const bricksPerRow = 14; 
     const totalBrickWidth = bricksPerRow * brick.width;
@@ -35,7 +35,7 @@ export default function Brick(level, bricks, canvas, brick) {
     }
     // Brick Formation here
     const startX = (canvas.width - totalBrickWidth) /3 ;
-    for (let i = 0; i < 28 * level; i++) {
+    for (let i = 0; i < bricksPerRow * level; i++) {
         const randomIndex = Math.floor(Math.random() * bricksImage.length); // Generate a random index
         const randomBrickImage = bricksImage[randomIndex];
         
@@ -55,6 +55,7 @@ export default function Brick(level, bricks, canvas, brick) {
     }
     return newbricks;
 }
+
 
 class SingleBrick {
     constructor(x, y, w, h, image) {

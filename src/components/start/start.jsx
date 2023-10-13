@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Board from '../board/board';
 import styles from './start.module.css';
-import gameData from '../../shared/gameData';
+import { gameData } from '../../shared/gameData';
 import sound from '../../assets/sound/Theme.ogg';
 export default function Start() {
     const [gameStarted, setGameStarted] = useState(false);

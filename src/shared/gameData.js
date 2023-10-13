@@ -1,4 +1,4 @@
-export default  {
+export let gameData =  {
     ballObject: {
         x: 0,
         y: 250,

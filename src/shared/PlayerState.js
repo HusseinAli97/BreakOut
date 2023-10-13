@@ -4,6 +4,7 @@ export default function PlayerState(ctx, player, canvas) {
     ctx.fillStyle = "white";
     ctx.fillText(`Name: ${player.Name}`, 20, 30);
 
+        
     // Lives
     ctx.font = "20px Arial";
     ctx.fillStyle = "red";
