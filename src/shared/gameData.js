@@ -2,9 +2,9 @@ export let gameData =  {
     ballObject: {
         x: 0,
         y: 250,
-        dx: 2,
-        dy: 2,
-        speed: 1,
+        dx: 2.3,
+        dy: 2.3,
+        speed: 1.5,
         rad: 20
     },
     brickObj: {
