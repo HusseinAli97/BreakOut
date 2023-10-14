@@ -9,11 +9,10 @@ export default function AllBroken(bricks, Player, canvas, ballObject) {
     }
     if (total === bricks.length) {
         gameData.Player.Level++;
-        gameData.ballObject.dy +=.1;
-        gameData.ballObject.dx +=.1;
-        gameData.ballObject.speed +=3;
-        gameData.paddle.width -= 50; 
+        gameData.ballObject.speed +=.2;
+        gameData.paddle.width -= 15; 
+        ballObject.x = gameData.paddle.x + gameData.paddle.width / 2;
+        ballObject.y = gameData.paddle.y - 30;
         return
-        
     }
 }
