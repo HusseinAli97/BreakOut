@@ -7,16 +7,14 @@ import ballDriaction from '../../shared/ballDriaction';
 import paddelSetting from '../../shared/paddelSetting';
 import BrickStyle from '../../shared/bricksStyle';
 import BrickCollision from '../../shared/brickCollision';
-import sound from '../../assets/sound/hit.ogg'
+import sound from '../../assets/sound/hit.ogg';
 import paddelCollision from '../../shared/paddelCollision';
 import PlayerState from '../../shared/PlayerState.js';
 import { gameEnd } from '../../shared/ballDriaction';
 import AllBroken from '../../shared/allIsBricks';
 
-
-
 export default function Board() {
-    let { ballObject, brickObj, paddle, Player } = gameData;
+    let { ballObject, brickObj, paddle, Player, gameState, gamePaused } = gameData;
     let [gameOver, setGame] = useState(gameEnd);
     let bricks = [];
     let brick = new Audio();
@@ -30,15 +28,17 @@ export default function Board() {
         const ctx = canvas.getContext('2d');
         const img = new Image();
         img.src = ballimg;
+        canvas.addEventListener('click', (e) => {
+            gameState = "playing";
+        })
         img.onload = () => {
-            
             const render = () => {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 let newBrickSet = BrickStyle(Player.Level, bricks, canvas, brickObj);
                 if (newBrickSet && newBrickSet.length > 0) {
                     bricks = newBrickSet;
                 }
-                let brickCollision
+                let brickCollision;
                 for (let i = 0; i < bricks.length; i++) {
                     brickCollision = BrickCollision(ballObject, bricks[i]);
                     if (brickCollision.hit && !bricks[i].broke) {
@@ -49,25 +49,29 @@ export default function Board() {
                             ballObject.dy *= -1;
                             bricks[i].broke = true;
                         }
-                        brick.play()
-                        brick.volume = 0.2
+                        brick.play();
+                        brick.volume = 0.2;
                         Player.Score += 10;
                     }
                 }
                 bricks.map((brick) => {
                     return brick.draw(ctx);
-                })
-                paddelCollision(ballObject, paddle);
-                BallMovment(ctx, ballObject, img, canvas);
+                });
+
+                if (gameState === "playing") {
+                    paddelCollision(ballObject, paddle);
+                    BallMovment(ctx, ballObject, img, canvas, paddle, gameState);
+                }
+
                 AllBroken(bricks, Player, canvas, ballObject);
-                ballDriaction(ballObject, canvas,paddle,setGame);
+                ballDriaction(ballObject, canvas, paddle, setGame);
                 PlayerState(ctx, Player, canvas);
                 paddelSetting(ctx, canvas, gameData.paddle);
                 requestAnimationFrame(render);
             };
             render();
         };
-    }, []);
+    }, [gameState]);
 
     return (
         <div className={styles.board}>
@@ -83,7 +87,7 @@ export default function Board() {
                 </>
             ) : (
                 <>
-                    <canvas className={styles.canvas} ref={canvasRef} id="Canvas" width="800" height="500" onMouseMove={(e) => paddle.x =(e.clientX - e.clientY) - paddle.width / 2 }>
+                    <canvas className={styles.canvas} ref={canvasRef} id="Canvas" width="800" height="500" onMouseMove={(e) => paddle.x = (e.clientX - e.clientY) - paddle.width / 2}>
                         {
                             document.addEventListener('keydown', (e) => {
                                 if (e.key === 'ArrowRight') {
@@ -94,9 +98,7 @@ export default function Board() {
                             })
                         }
                     </canvas>
-
                 </>
-
             )}
         </div>
     );

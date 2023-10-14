@@ -1,16 +1,20 @@
-export function BallMovment(ctx, ballObject,img) {
-    let gameData = new Ball(ballObject.x, ballObject.y, ballObject.dx, ballObject.dy, ballObject.speed, ballObject.rad);
-    gameData.draw(ctx, img);
-    ballObject.x += ballObject.dx;
-    ballObject.y += ballObject.dy;
-}
-class Ball {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.rad = 20;
-    }
-    draw(ctx, img) {
-        ctx.drawImage(img, this.x, this.y, this.rad, this.rad);
+import { gameData } from "./gameData";
+
+export function BallMovment(ctx, ballObject, img, gameState, ballDirection) {
+    if (gameState === 'waiting') {
+        // Set the initial position of the ball
+        ballObject.x = gameData.paddle.x + gameData.paddle.width / 2;
+        ballObject.y = gameData.paddle.y - ballObject.rad - 2;
+        // Pause the ball's movement
+        ballObject.dx = 0;
+        ballObject.dy = 0;
+        // Render the ball in the "waiting" position
+        ctx.drawImage(img, ballObject.x, ballObject.y, ballObject.rad, ballObject.rad);
+    } else {
+        // Handle the ball's movement
+        ballObject.x += ballObject.dx;
+        ballObject.y += ballObject.dy;
+        // Render the ball in its current position
+        ctx.drawImage(img, ballObject.x, ballObject.y, ballObject.rad, ballObject.rad);
     }
 }

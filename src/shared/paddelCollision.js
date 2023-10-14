@@ -1,20 +1,17 @@
-export default function paddelCollision(ballObj, paddleProps) {
+export default function paddleCollision(ballObject, paddleProps) {
     if (
-        ballObj.x < paddleProps.x + paddleProps.width+20 &&
-        ballObj.x > paddleProps.x &&
-        paddleProps.y < paddleProps.y + paddleProps.height &&
-        ballObj.y + ballObj.rad > paddleProps.y - paddleProps.height + 40 / 2
+        ballObject.x + ballObject.rad >= paddleProps.x &&
+        ballObject.x - ballObject.rad <= paddleProps.x + paddleProps.width
     ) {
-        // CHECK WHERE THE ballObj HIT THE paddleProps
-        let collidePoint = ballObj.x - (paddleProps.x + paddleProps.width / 2);
+        if (ballObject.y + ballObject.rad >= paddleProps.y) {
+            // Calculate where the ball hits the paddle
+            const collidePoint = ballObject.x - (paddleProps.x + paddleProps.width / 2);
+            const normalizedCollidePoint = collidePoint / (paddleProps.width / 2);
+            const bounceAngle = normalizedCollidePoint * (Math.PI / 3);
 
-        // NORMALIZE THE VALUES
-        collidePoint = collidePoint / (paddleProps.width / 2);
-
-        // CALCULATE THE ANGLE OF THE ballObj
-        let angle = (collidePoint * Math.PI) / 3;
-
-        ballObj.dx = ballObj.speed * Math.sin(angle);
-        ballObj.dy = -ballObj.speed * Math.cos(angle);
+            // Adjust the ball's direction
+            ballObject.dx = ballObject.speed * Math.sin(bounceAngle);
+            ballObject.dy = -ballObject.speed * Math.cos(bounceAngle);
+        }
     }
 }

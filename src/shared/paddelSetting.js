@@ -4,8 +4,8 @@ export default (ctx, canvas, paddleProps) => {
     class Paddle {
         constructor(x) {
             this.x = x;
-            this.y = canvas.height - 22;
-            this.height = paddleProps.height;
+            this.y = canvas.height - 48;
+            this.height = paddleProps.height+8;
             this.width = paddleProps.width;
             this.image = new Image();
             this.image.src = paddleImage;

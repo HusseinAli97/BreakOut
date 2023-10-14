@@ -13,6 +13,7 @@ export default function Start() {
         themeSound.play();
         themeSound.loop = true;
         themeSound.volume = 0.4;
+        gameData.gameState = "waiting"; // Set the game state to "waiting"
     };
 
     const handleNameChange = (e) => {

@@ -16,7 +16,7 @@ export let gameData =  {
     },
     paddle: {
         x: 100,
-        y: 500-20,
+        y: 500-44,
         height: 20,
         width: document.body.clientWidth/10,
         colors: [
@@ -29,5 +29,7 @@ export let gameData =  {
         Lives : 5,
         Score : 0,
         Name : ''
-    }
+    },
+    gameState: "waiting",
+    gamePaused: false
 }
