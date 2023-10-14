@@ -4,7 +4,7 @@ export let gameData =  {
         y: 250,
         dx: 2,
         dy: 2,
-        speed: 2,
+        speed: 2.4,
         rad: 20
     },
     brickObj: {

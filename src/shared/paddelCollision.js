@@ -1,9 +1,9 @@
 export default function paddelCollision(ballObj, paddleProps) {
     if (
-        ballObj.x < paddleProps.x + paddleProps.width &&
+        ballObj.x < paddleProps.x + paddleProps.width+20 &&
         ballObj.x > paddleProps.x &&
         paddleProps.y < paddleProps.y + paddleProps.height &&
-        ballObj.y + ballObj.rad > paddleProps.y - paddleProps.height+40 / 2
+        ballObj.y + ballObj.rad > paddleProps.y - paddleProps.height + 40 / 2
     ) {
         // CHECK WHERE THE ballObj HIT THE paddleProps
         let collidePoint = ballObj.x - (paddleProps.x + paddleProps.width / 2);

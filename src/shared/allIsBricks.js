@@ -1,5 +1,5 @@
 import { gameData } from "./gameData";
-export default function AllBroken(bricks, Player, canvas, ballObject) {
+export default function AllBroken(bricks, ballObject) {
 
     let total = 0;
     for (let i = 0; i < bricks.length; i++) {
