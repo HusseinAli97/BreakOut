@@ -31,5 +31,4 @@ export let gameData =  {
         Name : ''
     },
     gameState: "waiting",
-    gamePaused: false
 }

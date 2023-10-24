@@ -1,6 +1,6 @@
 import { gameData } from "./gameData";
 
-export function BallMovment(ctx, ballObject, img, gameState, ballDirection) {
+export function BallMovment(ctx, ballObject, img, gameState) {
     if (gameState === 'waiting') {
         // Set the initial position of the ball
         ballObject.x = gameData.paddle.x + gameData.paddle.width / 2;

@@ -10,6 +10,11 @@ Welcome to my awesome React Breakout Game! This is a fun and interactive game pr
 
 **React Breakout Game** is a classic arcade-style game inspired by the iconic Breakout game. It offers an engaging gaming experience where players control a paddle to bounce a ball and break bricks, all while trying to achieve the highest score.
 
+
+### Screenshot
+
+![todolist output.png](./src/assets/brekout.png)
+
 ## Game Features
 
 - **Intuitive Controls:** Use your mouse or arrow keys to control the paddle and aim for the perfect shot.

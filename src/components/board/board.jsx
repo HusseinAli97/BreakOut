@@ -14,7 +14,7 @@ import { gameEnd } from '../../shared/ballDriaction';
 import AllBroken from '../../shared/allIsBricks';
 
 export default function Board() {
-    let { ballObject, brickObj, paddle, Player, gameState, gamePaused } = gameData;
+    let { ballObject, brickObj, paddle, Player, gameState } = gameData;
     let [gameOver, setGame] = useState(gameEnd);
     let bricks = [];
     let brick = new Audio();
